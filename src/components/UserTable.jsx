@@ -1,9 +1,27 @@
 import React from "react";
 import UserRow from "./UserRow";
 
-const UserTable = ({ users, search, page, itemPerPage, ismainChecked, setIsMainChecked, handleSelectAll, editId,
-                     uname, uemail, urole, handleEdit, handleCheck, deleteUser, handleUpdate, nameError, isRowSelected,
-                     emailError, roleError,}) => {
+const UserTable = ({
+  users,
+  search,
+  page,
+  itemPerPage,
+  ismainChecked,
+  setIsMainChecked,
+  handleSelectAll,
+  editId,
+  uname,
+  uemail,
+  urole,
+  handleEdit,
+  handleCheck,
+  deleteUser,
+  handleUpdate,
+  nameError,
+  isRowSelected,
+  emailError,
+  roleError,
+}) => {
   return (
     <table className="table">
       <thead>
@@ -55,4 +73,5 @@ const UserTable = ({ users, search, page, itemPerPage, ismainChecked, setIsMainC
     </table>
   );
 };
+
 export default UserTable;

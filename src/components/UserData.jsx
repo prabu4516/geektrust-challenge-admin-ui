@@ -72,6 +72,25 @@ const UserData = ({ api }) => {
         break;
     }
   };
+  // const handleSelectAll = (event) => {
+  //   const isChecked = event.target.checked;
+  //   const pageStart = (page - 1) * itemPerPage;
+  //   const pageEnd = pageStart + itemPerPage;
+  //   const pageRows = users.slice(pageStart, pageEnd);
+  //   const updatedPageRows = pageRows.map((row) => ({
+  //     ...row,
+  //     isChecked,
+  //   }));
+  //   const updatedUsers = [...users];
+  //   updatedUsers.splice(pageStart, itemPerPage, ...updatedPageRows);
+  //   setUsers(updatedUsers);
+  //   setIsMainChecked(isChecked);
+  //   if (isChecked) {
+  //     setSelectedRows(pageRows.map((row) => row.id));
+  //   } else {
+  //     setSelectedRows([]);
+  //   }
+  // };
   const handleSelectAll = (event) => {
     const isChecked = event.target.checked;
     const pageStart = (page - 1) * itemPerPage;
@@ -92,6 +111,20 @@ const UserData = ({ api }) => {
     }
   };
 
+  // const handleCheck = (event) => {
+  //   const { name, checked } = event.target;
+  //   const updatedUsers = users.map((user) =>
+  //     user.id === name ? { ...user, isChecked: checked } : user
+  //   );
+  //   setUsers(updatedUsers);
+  //   if (checked) {
+  //     setSelectedRows((prevSelectedRows) => [...prevSelectedRows, name]);
+  //   } else {
+  //     setSelectedRows((prevSelectedRows) =>
+  //       prevSelectedRows.filter((rowId) => rowId !== name)
+  //     );
+  //   }
+  // };
   const handleCheck = (event) => {
     const { name, checked } = event.target;
     const updatedUsers = users.map((user) =>
@@ -110,12 +143,16 @@ const UserData = ({ api }) => {
     const isAllChecked = updatedUsers.every((user) => user.isChecked);
     setIsMainChecked(isAllChecked);
   };
+  // Apply grayish background color to selected rows
   const isRowSelected = (id) => selectedRows.includes(id);
 
   const handleAllDelete = () => {
+    // const pageStart = (page - 1) * itemPerPage;
+    // const pageEnd = pageStart + itemPerPage;
     const checkedUserIds = users
-    .filter((user) => user.isChecked)
-    .map((user) => user.id);
+      // .slice(pageStart, pageEnd)
+      .filter((user) => user.isChecked)
+      .map((user) => user.id);
     const updatedUsers = users.filter(
       (user) => !checkedUserIds.includes(user.id)
     );
@@ -124,6 +161,7 @@ const UserData = ({ api }) => {
   };
 
   const handleUpdate = () => {
+    //const user = users.find((user) => user.id === id);
     setNameError("");
     setEmailError("");
     setRoleError("");

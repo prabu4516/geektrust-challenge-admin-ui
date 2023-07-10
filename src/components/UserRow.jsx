@@ -2,9 +2,22 @@ import React from "react";
 import "./UserData.css";
 import { AiFillEdit, AiFillDelete } from "react-icons/ai";
 
-const UserRow = ({ isRowSelected, user, editId, uname, uemail, urole, handleEdit, handleCheck, deleteUser,
-    handleUpdate, nameError, emailError, roleError, }) => {
-        return (
+const UserRow = ({
+  isRowSelected,
+  user,
+  editId,
+  uname,
+  uemail,
+  urole,
+  handleEdit,
+  handleCheck,
+  deleteUser,
+  handleUpdate,
+  nameError,
+  emailError,
+  roleError,
+}) => {
+  return (
     <tr key={user.id} className={isRowSelected(user.id) ? "selected" : ""}>
       <td>
         <input
