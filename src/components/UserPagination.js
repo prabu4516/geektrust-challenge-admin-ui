@@ -77,5 +77,4 @@ const UserPagination = (props) => {
     );
 };
 
-
 export default UserPagination;
