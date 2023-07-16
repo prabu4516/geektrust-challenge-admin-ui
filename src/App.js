@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import "./App.css";
-//import UserPagination from "./components/UserPagination";
+import './App.css';
 import UserList from "./components/UserList";
 import { fetchData } from "./services/index";
 import { config } from "./config/config";
@@ -23,33 +22,28 @@ const App = () => {
   }, []);
 
   //search users by name,email and role
-  const searchUsers = (event) => {
-    setCurrentPage(1);
-    let searchUser = event.target.value.toLowerCase();
-    let filteredUsers = users.map((user) => {
-      if (
-        user.name.toLowerCase().includes(searchUser) ||
-        user.email.toLowerCase().includes(searchUser) ||
-        user.role.toLowerCase().includes(searchUser)
-      ) {
-        user.show = true;
-        return user;
-      }
-      else {
-        user.show = false;
-        return user;
-      }
-    })
-    setUserList(filteredUsers);
+  function searchUsers(searchTerm) {
+    searchTerm = searchTerm.toLowerCase();
+  
+    const filteredUsers = users.filter((user) => {
+      const name = user.name.toLowerCase();
+      const email = user.email.toLowerCase();
+      const role = user.role.toLowerCase();
+  
+      return (
+        name.includes(searchTerm) ||
+        email.includes(searchTerm) ||
+        role.includes(searchTerm)
+      );
+    });
+  
+    return filteredUsers;
   };
 
   //delete user by id
-  const deleteUser = (id) => {
-    let tempUsers = users.filter((user) => user.id !== id)
-    setUserList(tempUsers);
-    setChangeUpdate((prevState) => !prevState)
-    //setUserList(users.filter((user) => user.id !== id))
-  };
+  function deleteUser(id) {
+    users = users.filter(user => user.id !== userId);
+  }
   //dUser();
 
   //edit user by id
@@ -61,6 +55,7 @@ const App = () => {
     setChangeUpdate((prevState) => !prevState);
 
   };
+  
   //eUser()
 
   //save user data
@@ -104,13 +99,10 @@ const App = () => {
 
   };
 
-  const deleteSelected = () => {
-
-    setUserList((prevState) => prevState.filter((user) => !user.isChecked));
-    selectAllRef.current.checked = false;
-
+  function deleteSelected(selectedItems) {
+    items = items.filter(item => !selectedItems.includes(item));
   };
-
+  
   let ind = (currentPage - 1) * 10;
   return (
     <div className="App">

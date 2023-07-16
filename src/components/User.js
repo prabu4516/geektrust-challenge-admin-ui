@@ -1,6 +1,4 @@
 import { useRef } from "react";
-
-
 import "./User.css";
 
 const User = (props) => {
@@ -41,6 +39,7 @@ const User = (props) => {
                 name="email"
                 ref={emailEl}
                 defaultValue={user.email}
+                onChange={(event) => handleInputChange(event, user.id)}
                 />
             </td>
             <td>

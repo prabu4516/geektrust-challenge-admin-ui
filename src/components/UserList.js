@@ -2,21 +2,10 @@ import { useEffect } from "react";
 import User from "./User";
 import "./UserList.css";
 
-
 const UserList = (props) => {
     let {
-       users,
-       deleteUser,
-       editUser,
-       saveUser,
-       selectAllCheckbox,
-       checkOne,
-       selectAllRef,
-       setCurrentPage,
-       currentPage,
-       
+       users, deleteUser, editUser, saveUser, selectAllCheckbox, checkOne, selectAllRef, setCurrentPage, currentPage
     } = props;
-
 
     useEffect(() => {
         if(users?.length === 0 && currentPage > 1){
@@ -69,7 +58,4 @@ const UserList = (props) => {
         )
     }
 }
-
-
-
 export default UserList;
