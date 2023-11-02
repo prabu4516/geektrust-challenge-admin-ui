@@ -1,0 +1,33 @@
+.btnCont{
+    width: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    padding: 12px;
+}
+
+.btnContIN{
+    width: 45%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.num,.left , .right{
+    height: 30px;
+    width: 30px;
+    border-radius: 30%;
+    border: none;
+}
+
+.num{
+    background-color: #cae5ff;
+}
+
+.right{
+    background-color: #cae5ff;
+}
+
+.left{
+    background-color: grey;
+    color: black;
+}
