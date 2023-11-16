@@ -4,7 +4,7 @@ import "./list.css"
 
 const List = () => {
     const {
-        search, setSearch,
+        search,
         data, setData,
         currPage, setCurrpage,
         checked, setChecked,
@@ -34,23 +34,30 @@ const List = () => {
 
 //  handleCheck function manages the check and uncheck process and add or remove  the current object from checked list 
     const handleCheck = (e, id) => {
-        setSelectAll(false);
-        if (e.target.checked) {
-            setChecked([...checked, id]);
-        } else {
-            setChecked(checked.filter((i) => i !== id));
-        }
-    }
+    setSelectAll(false);
+  
+    setChecked((prevChecked) => {
+      if (e.target.checked) {
+        return [...prevChecked, id];
+      } else {
+        return prevChecked.filter((i) => i !== id);
+      }
+    });
+  };
 
 
     // handleEdit function toggles the data field between data and input field to be edited
     const handleEdit = (id) => {
-        setEditing({ [id]: true });
         const index = data.findIndex((e) => e.id === id);
-        setEditName(data[index].name);
-        setEditEmail(data[index].email);
-        setEditRole(data[index].role);
-    }
+        const editedItem = data[index];
+      
+        setEditingDetails({
+          id: editedItem.id,
+          name: editedItem.name,
+          email: editedItem.email,
+          role: editedItem.role,
+        });
+      };
 
 
     // handleSave function search the current user from the data list and changes its values to new values provided by user

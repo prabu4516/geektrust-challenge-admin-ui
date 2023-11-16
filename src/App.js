@@ -9,6 +9,8 @@ import axios from 'axios';
 import "./App.css"
 function App() {
 
+
+
   //  data : list of user revieved from api
   //  filterD: list of user after filtering it
   //  currPage: variable to store the current page number
@@ -38,7 +40,10 @@ useEffect(() => {
     fetch();
 }, [])
 
-return (
+
+
+
+  return (
     <MyContext.Provider 
     value={{
       data,setData,
@@ -51,7 +56,7 @@ return (
     }}>
       
     <div className="App">
-      <SearchBar/>
+      <searchBar/>
       <List/>
       <Pagination/>
     </div>
