@@ -10,7 +10,7 @@ const List = () => {
         checked, setChecked,
         isSelectAll, setSelectAll,
         filterD, setFilterD,
-        userPerPage,
+        userPerPage, setEditingDetails,
     } = useContext(MyContext);
 
 
@@ -51,7 +51,7 @@ const List = () => {
         const index = data.findIndex((e) => e.id === id);
         const editedItem = data[index];
       
-        setEditingDetails({
+     setEditingDetails({
           id: editedItem.id,
           name: editedItem.name,
           email: editedItem.email,
